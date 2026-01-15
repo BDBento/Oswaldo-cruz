@@ -138,8 +138,7 @@
             <div class="container">
                 <p>
                     © 2026 Laboratório Oswaldo Cruz – Todos os direitos reservados.
-                    <span class="cnpj">CNPJ: 03.350.899/0003-22</span>
-                </p>
+                    <span class="cnpj">CNPJ: 03.350.899/0001-60</span>
             </div>
         </div>
     </section>

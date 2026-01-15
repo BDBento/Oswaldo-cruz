@@ -51,7 +51,7 @@
             'fallback_cb'    => false,
           ));
           ?>
-          <a href="https://www.oswaldocruzms.com.br/exames/" class="btn btn-banner" target="_blank" rel="noopener">
+          <a href="https://oswaldocruz-rol.pixeonkorus.com/Login.aspx?ad=oswaldocruz" class="btn btn-banner" target="_blank" rel="noopener">
             Resultados Online
           </a>
         </nav>

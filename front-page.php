@@ -9,7 +9,7 @@
                 <div class="banner-text">
                     <h1>Excelência<br>e Dedicação</h1>
                     <p>Coleta de Material e Exames de Sangue com resultados rápidos e exatos.</p>
-                    <a href="#" class="btn btn-banner">Saiba mais</a>
+                    <a href="<?php echo esc_url(home_url('/exames')); ?>" class="btn btn-banner">Saiba mais</a>
                 </div>
 
                 <!-- IMAGEM (vai extrapolar até o fim da tela) -->
@@ -128,7 +128,7 @@
                         ao seu médico na formulação de diagnósticos confiáveis. Proporcionamos também, caso seja
                         necessário, a entrega de laudos com resultados, no mesmo dia, para exames de rotina e de 90% dos
                         exames considerados especiais.</p>
-                    <a href="#"><button class="btn btn-banner">Continuar lendo</button></a>
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('empresa'))); ?>"><button class="btn btn-banner">Continuar lendo</button></a>
                 </div>
             </div>
         </div>
@@ -153,15 +153,15 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/unimed.webp" alt="Unimed">
 
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/geap.webp" alt="Geap">
-                       
+
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/cabesp.webp" alt="Cabesp">
-                       
+
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/embrapa.webp" alt="Embrapa">
-                        
+
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/plan-assiste.webp" alt="Plan Assiste">
-                       
+
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/servimed.webp" alt="Servimed">
-                       
+
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/sulamerica.webp" alt="Sulamerica">
 
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/convenios/fundacao-ufms.webp" alt="Fundação UFMS">
@@ -184,34 +184,6 @@
     </section>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.querySelector('.convenios-image-slider.is-marquee');
-            if (!slider) return;
-
-            // pega as imagens atuais
-            const imgs = Array.from(slider.querySelectorAll('img'));
-            if (!imgs.length) return;
-
-            // cria a track
-            const track = document.createElement('div');
-            track.className = 'marquee-track';
-
-            // move as imagens para dentro da track
-            imgs.forEach(img => track.appendChild(img));
-
-            // duplica para dar loop perfeito (50% no keyframes)
-            imgs.forEach(img => track.appendChild(img.cloneNode(true)));
-
-            slider.appendChild(track);
-
-            // velocidade automática baseada em quantidade (opcional)
-            // quanto mais logos, mais tempo para não ficar rápido demais
-            const count = imgs.length;
-            const duration = Math.min(80, Math.max(40, count * 4)); // 18s..40s
-            slider.style.setProperty('--marquee-duration', `${duration}s`);
-        });
-    </script>
 
 
 
@@ -236,15 +208,29 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="card-duvida">
-                        <h2>Duvida? envie-nos um email.</h2>
-                        <div class="form">
-                            <input type="text" placeholder="Digite seu email">
-                            <textarea name="mensagem" id="mensagem" cols="30" rows="5"
-                                placeholder="Qual a sua duvida?"></textarea>
-                            <button>Enviar</button>
-                        </div>
+                    <div class="card-duvida" id="duvida-home">
+                        <h2>Dúvida? Envie-nos um e-mail.</h2>
+
+                        <?php if (isset($_GET['duvida']) && $_GET['duvida'] === 'sucesso') : ?>
+                            <div class="form-sucesso">Mensagem enviada com sucesso.</div>
+                        <?php endif; ?>
+
+                        <form class="form form-duvida"
+                            action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+                            method="post">
+
+                            <?php wp_nonce_field('duvida_home_nonce', 'duvida_home_nonce_field'); ?>
+                            <input type="hidden" name="action" value="duvida_home_enviar">
+
+                            <input type="email" name="email" placeholder="Digite seu email" required>
+
+                            <textarea name="mensagem" id="mensagem" rows="5"
+                                placeholder="Qual a sua dúvida?" required></textarea>
+
+                            <button type="submit">Enviar</button>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>

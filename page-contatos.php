@@ -72,7 +72,7 @@ get_header(); ?>
 
 
                 <?php if (isset($_GET['enviado']) && $_GET['enviado'] === 'sucesso') : ?>
-                    <div class="contatos-form-sucesso">
+                    <div class="contatos-form-sucesso" id="contatos-form-sucesso">
                         Mensagem enviada com sucesso. Em breve entraremos em contato.
                     </div>
                 <?php endif; ?>

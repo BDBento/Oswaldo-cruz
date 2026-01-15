@@ -1,14 +1,16 @@
 <?php
+
 /**
  * Funções do tema Oswaldo Cruz
  */
 
-if ( ! defined('ABSPATH') ) exit;
+if (! defined('ABSPATH')) exit;
 
 /* =========================
    Setup do tema
 ========================= */
-function oswaldocruz_setup() {
+function oswaldocruz_setup()
+{
   add_theme_support('title-tag');
   add_theme_support('post-thumbnails');
 
@@ -28,7 +30,8 @@ add_action('after_setup_theme', 'oswaldocruz_setup');
 /* =========================
    Enfileirar CSS/JS
 ========================= */
-function oswaldocruz_scripts() {
+function oswaldocruz_scripts()
+{
 
   // Bootstrap 5.3 (CDN)
   wp_enqueue_style(
@@ -59,7 +62,7 @@ function oswaldocruz_scripts() {
     'oswaldocruz-main',
     get_template_directory_uri() . '/assets/js/main.js',
     array('bootstrap'),
-    null,
+    filemtime(get_template_directory() . '/assets/js/main.js'),
     true
   );
 }
@@ -69,12 +72,10 @@ add_action('wp_enqueue_scripts', 'oswaldocruz_scripts');
    Admin bar (opcional)
 ========================= */
 add_action('init', function () {
-  if ( is_user_logged_in() ) {
+  if (is_user_logged_in()) {
     show_admin_bar(true);
   }
 });
-
-
 
 
 /* ============================
@@ -108,15 +109,10 @@ function handle_fale_conosco() {
   $subject = 'Fale Conosco / Dúvidas';
 
   // Corpo do email
-  $body = "
-  Nova mensagem recebida pelo site:
-
-  Nome: {$nome}
-  E-mail: {$email}
-
-  Mensagem:
-  {$mensagem}
-  ";
+  $body = "Nova mensagem recebida pelo site:\n\n";
+  $body .= "Nome: {$nome}\n";
+  $body .= "E-mail: {$email}\n\n";
+  $body .= "Mensagem:\n{$mensagem}\n";
 
   // Headers
   $headers = array(
@@ -127,13 +123,71 @@ function handle_fale_conosco() {
   // Envio
   wp_mail($to, $subject, $body, $headers);
 
-  // Redireciona de volta com status
-  wp_redirect(
-    add_query_arg(
-      'enviado',
-      'sucesso',
-      wp_get_referer()
-    )
+  // Redirect com âncora (não sobe a página)
+  $ref = wp_get_referer();
+  if ( ! $ref ) {
+    $ref = home_url('/');
+  }
+
+  $url = add_query_arg('enviado', 'sucesso', $ref);
+  $url .= '#contatos-form-sucesso';
+
+  wp_redirect( $url );
+  exit;
+}
+
+
+
+/* ============================
+   Dúvidas (Home) – Envio de Email
+============================ */
+add_action('admin_post_nopriv_duvida_home_enviar', 'handle_duvida_home');
+add_action('admin_post_duvida_home_enviar', 'handle_duvida_home');
+
+function handle_duvida_home()
+{
+
+  if (
+    ! isset($_POST['duvida_home_nonce_field']) ||
+    ! wp_verify_nonce($_POST['duvida_home_nonce_field'], 'duvida_home_nonce')
+  ) {
+    wp_die('Falha de segurança.');
+  }
+
+  $email    = sanitize_email($_POST['email'] ?? '');
+  $mensagem = sanitize_textarea_field($_POST['mensagem'] ?? '');
+
+  if (empty($email) || empty($mensagem)) {
+    wp_die('Todos os campos são obrigatórios.');
+  }
+
+  $to      = 'contato@oswaldocruzms.ms.gov.br';
+  $subject = 'Dúvidas (Home)';
+
+  $body = "
+  Nova dúvida recebida pela HOME:
+
+  E-mail: {$email}
+
+  Mensagem:
+  {$mensagem}
+  ";
+
+  $headers = array(
+    'Content-Type: text/plain; charset=UTF-8',
+    'Reply-To: <' . $email . '>',
   );
+
+  wp_mail($to, $subject, $body, $headers);
+
+  $ref = wp_get_referer();
+  if (! $ref) $ref = home_url('/');
+
+  $url = add_query_arg('duvida', 'sucesso', $ref);
+
+  // garante que volta para o formulário (âncora)
+  $url .= '#duvida-home';
+
+  wp_redirect($url);
   exit;
 }
