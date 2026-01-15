@@ -1088,3 +1088,315 @@ p {
 	top:-40px;
 	left:48%
 }
+
+
+
+/* ===== CNPJ no rodapé ===== */
+.copyright p{
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.copyright .cnpj{
+  font-weight: 600;
+  color: #868686;
+}
+
+
+
+/* -------------------------------------ajustes para o mobile ----------------------------------- */
+/* =========================================================
+   MOBILE FIXES (cole no FINAL do main.css)
+   ========================================================= */
+
+/* 1) Ajustes gerais de tipografia e espaçamento */
+@media (max-width: 992px) {
+  .laboratorio-oswaldo { padding: 60px 0; }
+  .sobre-oswaldo { padding: 30px 0; }
+  .convenios { padding: 40px 0; }
+}
+
+/* 2) Banner (texto + losango) */
+@media (max-width: 992px) {
+  .banner-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .banner-text{
+    padding: 40px 0 10px;
+    text-align: left;
+  }
+
+  .banner-text h1{
+    font-size: 2.4em; /* antes estava 4.3em e estoura no mobile */
+  }
+
+  .banner-text p{
+    font-size: 1.1em;
+    max-width: 100%;
+  }
+
+  /* mantém a imagem full-bleed no mobile */
+  .banner-media{
+    width: 100vw;
+    margin-right: calc(50% - 50vw);
+    justify-content: center;
+    padding: 10px 0 24px;
+  }
+}
+
+/* losango ainda menor no celular */
+@media (max-width: 576px) {
+  :root{
+    --diamond-size: 300px;
+    --shadow-x: -14px;
+    --shadow-y: 14px;
+    --diamond-radius: 32px;
+  }
+
+  .banner-text{
+    padding: 28px 0 8px;
+  }
+
+  .banner-text h1{ font-size: 2.0em; }
+  .banner-text p{ font-size: 1.0em; }
+}
+
+/* 3) Seção "Sobre" (evita duas colunas apertadas) */
+@media (max-width: 992px) {
+  .sobre-oswaldo .sobre-content{
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .sobre-oswaldo .sobre-content .text-sobre h1{
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .sobre-oswaldo .sobre-content .text-sobre p{
+    font-size: 16px;
+    padding-bottom: 18px;
+  }
+}
+
+/* 4) Contatos (cards lado a lado -> empilha) */
+@media (max-width: 992px) {
+  .contatos-main-canais{
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px 0;
+  }
+
+  .contatos-main-canais .contatos-main-card{
+    width: 100%;
+    min-height: auto;
+  }
+
+  .contatos-main-canais .contatos-main-card p{
+    font-size: 18px;
+  }
+}
+
+/* 5) Formulário (garante que nada force scroll horizontal) */
+@media (max-width: 992px) {
+  /* caso você ainda use o formulário antigo .card-duvida .form */
+  .cards-loc-duvida .card-duvida .form textarea{
+    min-width: 0 !important; /* remove o min-width: 500px que estoura no mobile */
+    width: 100% !important;
+  }
+
+  .contatos-form-card h2{ font-size: 26px; }
+  .contatos-form-card p{ font-size: 16px; }
+  .contatos-form input,
+  .contatos-form textarea{ font-size: 14px; }
+}
+
+/* 6) Exames (grid) */
+@media (max-width: 576px){
+  .exames-section-cabecario h1,
+  .exames-section-cabecario h1 span{
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .exames-section-cabecario p{
+    font-size: 16px;
+  }
+}
+
+/* 7) Convênios (página) */
+@media (max-width: 992px){
+  .convenios-hero h1{ font-size: 2.0em; }
+  .convenios-hero p{ font-size: 1.0em; }
+
+  .convenios-cards{
+    grid-template-columns: 1fr;
+  }
+
+  .conv-card{
+    padding: 18px 18px;
+  }
+
+  .conv-card-icon{
+    position: static; /* remove o deslocamento no mobile */
+    margin-bottom: 10px;
+  }
+}
+
+/* grid de logos mais “fechado” no mobile */
+@media (max-width: 576px){
+  .convenios-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px; /* antes 70px: fica muito espaçado */
+  }
+
+  .convenios-grid img{
+    max-width: 180px;
+    height: 60px;
+  }
+}
+
+/* 8) Rodapé (CNPJ e textos quebrando bonitinho) */
+@media (max-width: 576px){
+  .copyright p{
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+/* ===== Desktop (mantém seu layout) ===== */
+.menu-principal{
+  padding: 15px 0;
+  background: #fff;
+}
+
+.menu-principal .menu-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-principal .menu-nav{
+  display: flex;
+  gap: 45px;
+  align-items: center;
+}
+
+.menu-principal .menu-nav li{ list-style: none; }
+
+.menu-principal .menu-nav li a{
+  font-size: 22px;
+  font-weight: 500;
+  color: #25383D;
+  text-decoration: none;
+}
+
+.menu-principal .menu-nav li a:hover{ text-decoration: underline; }
+
+/* ===== Botão hamburguer (desktop some) ===== */
+.menu-toggle{ display: none; }
+
+/* ===== Overlay (desktop some) ===== */
+.menu-overlay{ display: none; }
+
+/* ===== Mobile ===== */
+@media (max-width: 992px){
+  .menu-principal{ padding: 10px 0; }
+
+  /* botão hamburguer aparece */
+  .menu-toggle{
+    display: inline-flex;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    z-index: 10001;
+  }
+
+  .menu-toggle span{
+    width: 20px;
+    height: 2px;
+    background: #25383D;
+    position: relative;
+    display: block;
+  }
+  .menu-toggle span::before,
+  .menu-toggle span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #25383D;
+  }
+  .menu-toggle span::before{ top: -6px; }
+  .menu-toggle span::after{ top: 6px; }
+
+  /* overlay */
+  .menu-overlay{
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 10000;
+  }
+  .menu-overlay.is-open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* nav vira painel lateral */
+  .menu-principal .menu-nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(86vw, 340px);
+    background: #fff;
+    border-left: 1px solid #eee;
+    box-shadow: -12px 0 30px rgba(0,0,0,.12);
+    padding: 78px 18px 18px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+
+    transform: translateX(110%);
+    transition: transform .2s ease;
+    z-index: 10002;
+  }
+
+  .menu-principal .menu-nav.is-open{
+    transform: translateX(0);
+  }
+
+  .menu-principal .menu-nav li a{
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  /* botão do header menor */
+  .menu-principal .btn.btn-banner{
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}

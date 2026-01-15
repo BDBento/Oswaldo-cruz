@@ -31,17 +31,21 @@
     <div class="container">
       <div class="menu-content">
         <div class="logo">
-          <?php
-          if ( function_exists('the_custom_logo') ) {
-            the_custom_logo();
-          }
-          ?>
+          <?php if ( function_exists('the_custom_logo') ) { the_custom_logo(); } ?>
         </div>
+
+        <!-- BOTÃO MOBILE (novo) -->
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
+        </button>
+
+        <!-- OVERLAY (novo) -->
+        <div class="menu-overlay" aria-hidden="true"></div>
 
         <nav class="menu-nav">
           <?php
           wp_nav_menu(array(
-            'theme_location' => 'menu-principal', // use a MESMA key registrada no functions.php
+            'theme_location' => 'menu-principal',
             'container'      => false,
             'items_wrap'     => '%3$s',
             'fallback_cb'    => false,
@@ -51,7 +55,41 @@
             Resultados Online
           </a>
         </nav>
+
       </div>
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.menu-principal .menu-nav');
+  const btn = document.querySelector('.menu-toggle');
+  const overlay = document.querySelector('.menu-overlay');
+
+  if (!nav || !btn || !overlay) return;
+
+  const openMenu = () => {
+    nav.classList.add('is-open');
+    overlay.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeMenu = () => {
+    nav.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+
+  btn.addEventListener('click', () => {
+    nav.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+});
+
+</script>

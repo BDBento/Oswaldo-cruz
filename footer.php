@@ -124,18 +124,22 @@
 
                             <div class="obrigacoes">
                                 </br>
-                                <a href="<?php echo esc_url( home_url('/termo-de-uso') ); ?>">termo de uso</a>
+                                <a href="<?php echo esc_url(home_url('/termo-de-uso')); ?>">termo de uso</a>
                                 &nbsp; | &nbsp;
-                                <a href="<?php echo esc_url( home_url('/politica-de-privacidade') ); ?>">política de privacidade</a>
+                                <a href="<?php echo esc_url(home_url('/politica-de-privacidade')); ?>">política de privacidade</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- COPYRIGHT + CNPJ -->
         <div class="copyright">
             <div class="container">
-                <p>© 2026 Laboratório Oswaldo Cruz – Todos os direitos reservados.</p>
+                <p>
+                    © 2026 Laboratório Oswaldo Cruz – Todos os direitos reservados.
+                    <span class="cnpj">CNPJ: 03.350.899/0003-22</span>
+                </p>
             </div>
         </div>
     </section>
