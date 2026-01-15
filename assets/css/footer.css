@@ -1,0 +1,115 @@
+.footer {
+  background: #f1f1f1;
+  padding: 50px 0 0;
+
+  .footer-content {
+    margin-bottom: 50px;
+
+    .endereco {
+      .title {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+
+        h1 {
+          font-size: 30px;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+      }
+
+      .text-content {
+        padding: 0 0 0 65px;
+        .first {
+          margin-bottom: 20px;
+
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+
+          p:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .last {
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 5px;
+          }
+
+          p:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .atendimento {
+      .title {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+
+        h1 {
+          font-size: 30px;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+      }
+
+      .text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .item {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+
+          p {
+            font-size: 20px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .redes {
+      .title {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+
+        h1 {
+          font-size: 30px;
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+      }
+
+      .icons {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+
+  .copyright {
+    background: #e6e6e6;
+    padding: 22px 0;
+
+    p {
+      font-size: 17px;
+      font-weight: 400;
+      color: #565862;
+    }
+  }
+}

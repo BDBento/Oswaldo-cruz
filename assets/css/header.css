@@ -1,0 +1,46 @@
+.menu-principal {
+    padding: 15px 0;
+    background: white;
+
+    .menu-content {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-nav {
+            display: flex;
+            gap: 45px;
+            align-items: center;
+
+            li {
+                list-style: none;
+
+                a {
+                    font-size: 22px;
+                    font-weight: 500;
+                    color: #25383D;
+                    text-decoration: none;
+                }
+            }
+
+            button {
+                background: #9A3156;
+                padding: 19px 24px;
+                border: none;
+                border-radius: 7px;
+                color: white;
+                font-size: 22px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+.btn-resultados {
+    background: #9A3156;
+    padding: 19px 24px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: none;
+}
