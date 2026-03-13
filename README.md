@@ -52,3 +52,108 @@ O layout foi desenvolvido para oferecer **navegação simples, clara e adaptáve
 
 ## 📂 Estrutura do Projeto
 
+Oswaldo-cruz/
+│
+├── assets/
+│ ├── css/
+│ │ ├── fonts.css
+│ │ ├── header.css
+│ │ ├── footer.css
+│ │ └── main.css
+│ │
+│ ├── fonts/
+│ │ └── Poppins (família completa de fontes)
+│ │
+│ ├── img/
+│ │ ├── convenios/
+│ │ └── imagens institucionais
+│ │
+│ └── js/
+│ └── main.js
+│
+├── convenios.php
+├── front-page.php
+├── footer.php
+├── functions.php
+├── header.php
+├── index.php
+│
+├── page-certificacoes.php
+├── page-contatos.php
+├── page-convenios.php
+├── page-empresa.php
+├── page-exames.php
+│
+├── style.css
+└── screenshot.png
+
+
+---
+
+## 📄 Templates de Página
+
+O tema utiliza templates específicos para organização do conteúdo institucional.
+
+| Template | Finalidade |
+|--------|--------|
+| `front-page.php` | Página inicial do site |
+| `page-empresa.php` | Informações institucionais |
+| `page-exames.php` | Lista de exames laboratoriais |
+| `page-convenios.php` | Convênios atendidos |
+| `page-certificacoes.php` | Certificações do laboratório |
+| `page-contatos.php` | Página de contato |
+
+---
+
+## ⚙️ Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/BDBento/Oswaldo-cruz.git
+
+
+Copie a pasta do tema para:
+
+wp-content/themes/
+
+
+No painel do WordPress:
+
+Aparência → Temas
+
+
+Ative o tema Oswaldo Cruz.
+
+📋 Requisitos
+
+WordPress 5.x ou superior
+
+PHP 7.4 ou superior
+
+Servidor Apache ou Nginx
+
+⚡ Otimizações Implementadas
+
+Uso de imagens WebP
+
+Estrutura de CSS modular
+
+Carregamento de fontes localmente
+
+Organização de templates para melhor manutenção
+
+Separação de estilos (header.css, footer.css, main.css)
+
+👨‍💻 Autor
+
+Bruno Bento
+Analista de Sistemas | Desenvolvedor WordPress
+
+GitHub
+https://github.com/BDBento
+
+📜 Licença
+
+Este projeto está licenciado sob GPL v2 ou superior, compatível com o ecossistema WordPress.
+
