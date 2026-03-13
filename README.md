@@ -50,46 +50,6 @@ O layout foi desenvolvido para oferecer **navegação simples, clara e adaptáve
 
 ---
 
-## 📂 Estrutura do Projeto
-
-Oswaldo-cruz/
-│
-├── assets/
-│ ├── css/
-│ │ ├── fonts.css
-│ │ ├── header.css
-│ │ ├── footer.css
-│ │ └── main.css
-│ │
-│ ├── fonts/
-│ │ └── Poppins (família completa de fontes)
-│ │
-│ ├── img/
-│ │ ├── convenios/
-│ │ └── imagens institucionais
-│ │
-│ └── js/
-│ └── main.js
-│
-├── convenios.php
-├── front-page.php
-├── footer.php
-├── functions.php
-├── header.php
-├── index.php
-│
-├── page-certificacoes.php
-├── page-contatos.php
-├── page-convenios.php
-├── page-empresa.php
-├── page-exames.php
-│
-├── style.css
-└── screenshot.png
-
-
----
-
 ## 📄 Templates de Página
 
 O tema utiliza templates específicos para organização do conteúdo institucional.
